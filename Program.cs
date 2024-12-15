@@ -1,7 +1,9 @@
 using GeoTabKLineImport;
 
 var builder = Host.CreateApplicationBuilder(args);
+
+builder.Services.AddMemoryCache();
+builder.Services.AddSingleton<VehicleCache>();
 builder.Services.AddHostedService<Worker>();
 
-var host = builder.Build();
-host.Run();
+await builder.Build().RunAsync();

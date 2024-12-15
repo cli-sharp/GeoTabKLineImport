@@ -1,4 +1,6 @@
-﻿public record Vehicle
+﻿namespace GeoTabKLineImport;
+
+public record Vehicle
 {
-    public string VehicleIdentificationNumber { get; set; }
+    public required string VehicleIdentificationNumber { get; set; }
 }
