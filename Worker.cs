@@ -12,10 +12,10 @@ public class Worker(ILogger<Worker> logger, IConfiguration configuration, Vehicl
         while (stoppingToken.IsCancellationRequested is false)
         {
             var api = new API(
-                configuration.GetValue<string>("GeoTabUser"),
+                configuration.GetValue<string>("GeoTabUser") ?? string.Empty,
                 configuration.GetValue<string>("GeoTabPassword"),
                 null,
-                configuration.GetValue<string>("GeoTabDb"));
+                configuration.GetValue<string>("GeoTabDb") ?? string.Empty);
 
             var users = await api.CallAsync<IEnumerable<User>>(
                 "Get",
